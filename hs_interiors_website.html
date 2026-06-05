@@ -1,0 +1,2253 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HS Interiors Pune | Premium Interior Design Services</title>
+    <meta name="description" content="HS Interiors - Premium Interior Design Services in Pune. Home interiors, modular kitchens, bedrooms, living rooms, commercial spaces. 500+ projects completed.">
+    <meta name="keywords" content="interior design pune, home interiors, modular kitchen, bedroom design, living room design, commercial interiors, turnkey projects">
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- GSAP for Animations -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        gold: {
+                            50: '#faf8f0',
+                            100: '#f5f0e0',
+                            200: '#e8ddc0',
+                            300: '#d4c48a',
+                            400: '#c4a855',
+                            500: '#D4AF37',
+                            600: '#b8962e',
+                            700: '#9a7a26',
+                            800: '#7d621f',
+                            900: '#66511a',
+                        },
+                        charcoal: {
+                            50: '#f4f4f5',
+                            100: '#e3e4e6',
+                            200: '#c8cacf',
+                            300: '#a3a7b0',
+                            400: '#7a7f8a',
+                            500: '#5c616e',
+                            600: '#4a4e5a',
+                            700: '#3d4149',
+                            800: '#2a2d35',
+                            900: '#111827',
+                            950: '#0a0e1a',
+                        }
+                    },
+                    fontFamily: {
+                        display: ['Playfair Display', 'serif'],
+                        body: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Custom Styles */
+        :root {
+            --gold: #D4AF37;
+            --charcoal: #111827;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #111827;
+            color: #ffffff;
+            overflow-x: hidden;
+        }
+
+        .font-display {
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* Glassmorphism */
+        .glass {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .glass-dark {
+            background: rgba(17, 24, 39, 0.8);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(212, 175, 55, 0.1);
+        }
+
+        /* Gold Gradient Text */
+        .text-gold-gradient {
+            background: linear-gradient(135deg, #D4AF37 0%, #F4E4A6 50%, #D4AF37 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #111827;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #D4AF37;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #b8962e;
+        }
+
+        /* Hero Parallax */
+        .hero-bg {
+            background-image: linear-gradient(rgba(17, 24, 39, 0.7), rgba(17, 24, 39, 0.8)), url('https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+        /* Floating Animation */
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .animate-float {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        /* Pulse Glow */
+        @keyframes pulse-glow {
+            0%, 100% { box-shadow: 0 0 20px rgba(212, 175, 55, 0.3); }
+            50% { box-shadow: 0 0 40px rgba(212, 175, 55, 0.6); }
+        }
+
+        .animate-pulse-glow {
+            animation: pulse-glow 3s ease-in-out infinite;
+        }
+
+        /* Card Hover Effects */
+        .service-card {
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 50px -12px rgba(212, 175, 55, 0.25);
+        }
+
+        .service-card:hover .card-image {
+            transform: scale(1.1);
+        }
+
+        .card-image {
+            transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* FAQ Accordion */
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease, padding 0.5s ease;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 500px;
+        }
+
+        .faq-item.active .faq-icon {
+            transform: rotate(180deg);
+        }
+
+        .faq-icon {
+            transition: transform 0.3s ease;
+        }
+
+        /* Portfolio Grid */
+        .portfolio-item {
+            break-inside: avoid;
+            margin-bottom: 1.5rem;
+        }
+
+        .portfolio-overlay {
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .portfolio-item:hover .portfolio-overlay {
+            opacity: 1;
+        }
+
+        .portfolio-item:hover .portfolio-image {
+            transform: scale(1.05);
+        }
+
+        .portfolio-image {
+            transition: transform 0.6s ease;
+        }
+
+        /* Sticky Nav */
+        .nav-sticky {
+            background: rgba(17, 24, 39, 0.95);
+            backdrop-filter: blur(20px);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Counter Animation */
+        .counter-value {
+            font-variant-numeric: tabular-nums;
+        }
+
+        /* Mobile Menu */
+        .mobile-menu {
+            transform: translateX(100%);
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .mobile-menu.active {
+            transform: translateX(0);
+        }
+
+        /* Reveal Animation Classes */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .reveal-left {
+            opacity: 0;
+            transform: translateX(-50px);
+        }
+
+        .reveal-right {
+            opacity: 0;
+            transform: translateX(50px);
+        }
+
+        /* WhatsApp Float */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 50;
+            animation: pulse-glow 2s ease-in-out infinite;
+        }
+
+        /* Form Focus Effects */
+        .form-input:focus {
+            border-color: #D4AF37;
+            box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.2);
+        }
+
+        /* Section Divider */
+        .section-divider {
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #D4AF37, transparent);
+        }
+
+        /* Custom Selection */
+        ::selection {
+            background: rgba(212, 175, 55, 0.3);
+            color: #ffffff;
+        }
+
+        /* Hover Underline Effect */
+        .hover-underline {
+            position: relative;
+        }
+
+        .hover-underline::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #D4AF37;
+            transition: width 0.3s ease;
+        }
+
+        .hover-underline:hover::after {
+            width: 100%;
+        }
+
+        /* Noise Texture Overlay */
+        .noise-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 9999;
+            opacity: 0.03;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+        }
+
+        /* Progress Bar */
+        .progress-bar {
+            height: 3px;
+            background: linear-gradient(90deg, #D4AF37, #F4E4A6);
+            transform-origin: left;
+            transform: scaleX(0);
+        }
+
+        /* Responsive Typography */
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.5rem !important;
+                line-height: 1.2 !important;
+            }
+
+            .section-title {
+                font-size: 2rem !important;
+            }
+        }
+
+        /* Reduced Motion */
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+    </style>
+</head>
+<body class="bg-charcoal-900 text-white antialiased">
+    <!-- Noise Overlay for Premium Texture -->
+    <div class="noise-overlay"></div>
+
+    <!-- Progress Bar -->
+    <div class="fixed top-0 left-0 w-full z-50">
+        <div class="progress-bar" id="progressBar"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav id="navbar" class="fixed w-full z-40 transition-all duration-500">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <!-- Logo -->
+                <a href="#" class="flex items-center space-x-3 group">
+                    <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-gold-400 to-gold-600 flex items-center justify-center">
+                        <span class="font-display font-bold text-charcoal-900 text-lg">HS</span>
+                    </div>
+                    <div class="hidden sm:block">
+                        <span class="font-display font-bold text-xl text-white group-hover:text-gold-400 transition-colors">HS Interiors</span>
+                        <span class="block text-xs text-gold-400 tracking-widest uppercase">Pune</span>
+                    </div>
+                </a>
+
+                <!-- Desktop Navigation -->
+                <div class="hidden lg:flex items-center space-x-8">
+                    <a href="#about" class="text-sm font-medium text-gray-300 hover:text-gold-400 transition-colors hover-underline">About</a>
+                    <a href="#services" class="text-sm font-medium text-gray-300 hover:text-gold-400 transition-colors hover-underline">Services</a>
+                    <a href="#projects" class="text-sm font-medium text-gray-300 hover:text-gold-400 transition-colors hover-underline">Projects</a>
+                    <a href="#process" class="text-sm font-medium text-gray-300 hover:text-gold-400 transition-colors hover-underline">Process</a>
+                    <a href="#testimonials" class="text-sm font-medium text-gray-300 hover:text-gold-400 transition-colors hover-underline">Reviews</a>
+                    <a href="#contact" class="px-6 py-2.5 bg-gradient-to-r from-gold-500 to-gold-600 text-charcoal-900 font-semibold text-sm rounded-full hover:from-gold-400 hover:to-gold-500 transition-all duration-300 hover:shadow-lg hover:shadow-gold-500/25">
+                        Get Quote
+                    </a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <button id="mobileMenuBtn" class="lg:hidden p-2 text-white hover:text-gold-400 transition-colors">
+                    <i data-lucide="menu" class="w-6 h-6"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div id="mobileMenu" class="mobile-menu fixed inset-0 z-50 bg-charcoal-950 lg:hidden">
+        <div class="flex flex-col h-full p-6">
+            <div class="flex justify-between items-center mb-12">
+                <span class="font-display font-bold text-xl text-white">HS Interiors</span>
+                <button id="closeMobileMenu" class="p-2 text-white hover:text-gold-400 transition-colors">
+                    <i data-lucide="x" class="w-6 h-6"></i>
+                </button>
+            </div>
+            <div class="flex flex-col space-y-6">
+                <a href="#about" class="text-2xl font-display text-white hover:text-gold-400 transition-colors mobile-link">About</a>
+                <a href="#services" class="text-2xl font-display text-white hover:text-gold-400 transition-colors mobile-link">Services</a>
+                <a href="#projects" class="text-2xl font-display text-white hover:text-gold-400 transition-colors mobile-link">Projects</a>
+                <a href="#process" class="text-2xl font-display text-white hover:text-gold-400 transition-colors mobile-link">Process</a>
+                <a href="#testimonials" class="text-2xl font-display text-white hover:text-gold-400 transition-colors mobile-link">Reviews</a>
+                <a href="#contact" class="text-2xl font-display text-white hover:text-gold-400 transition-colors mobile-link">Contact</a>
+            </div>
+            <div class="mt-auto">
+                <a href="tel:+919876543210" class="flex items-center space-x-3 text-gold-400">
+                    <i data-lucide="phone" class="w-5 h-5"></i>
+                    <span>+91 98765 43210</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section id="hero" class="relative min-h-screen flex items-center justify-center hero-bg overflow-hidden">
+        <!-- Animated Background Elements -->
+        <div class="absolute inset-0 overflow-hidden pointer-events-none">
+            <div class="absolute top-20 left-10 w-72 h-72 bg-gold-500/10 rounded-full blur-3xl animate-float"></div>
+            <div class="absolute bottom-20 right-10 w-96 h-96 bg-gold-500/5 rounded-full blur-3xl animate-float" style="animation-delay: 2s;"></div>
+            <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-gold-500/5 rounded-full blur-3xl"></div>
+        </div>
+
+        <!-- Grid Pattern Overlay -->
+        <div class="absolute inset-0 opacity-5" style="background-image: linear-gradient(rgba(212, 175, 55, 0.3) 1px, transparent 1px), linear-gradient(90deg, rgba(212, 175, 55, 0.3) 1px, transparent 1px); background-size: 50px 50px;"></div>
+
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32 text-center">
+            <!-- Badge -->
+            <div class="inline-flex items-center space-x-2 px-4 py-2 rounded-full glass mb-8 reveal">
+                <span class="w-2 h-2 bg-green-400 rounded-full animate-pulse"></span>
+                <span class="text-sm text-gold-300 tracking-wider uppercase">Now Serving Pune & Nearby Areas</span>
+            </div>
+
+            <!-- Main Headline -->
+            <h1 class="hero-title font-display text-5xl md:text-7xl lg:text-8xl font-bold text-white mb-6 leading-tight reveal">
+                Transform Your Space<br>
+                <span class="text-gold-gradient">Into Something</span><br>
+                <span class="text-gold-gradient">Extraordinary</span>
+            </h1>
+
+            <!-- Subheading -->
+            <p class="text-lg md:text-xl text-gray-400 max-w-3xl mx-auto mb-10 reveal">
+                Premium Interior Design Services in Pune. From Concept to Execution, We Design Beautiful Homes & Commercial Spaces.
+            </p>
+
+            <!-- CTA Buttons -->
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16 reveal">
+                <a href="#contact" class="group px-8 py-4 bg-gradient-to-r from-gold-500 to-gold-600 text-charcoal-900 font-bold rounded-full hover:from-gold-400 hover:to-gold-500 transition-all duration-300 hover:shadow-2xl hover:shadow-gold-500/30 flex items-center space-x-2">
+                    <span>Get Free Consultation</span>
+                    <i data-lucide="arrow-right" class="w-5 h-5 group-hover:translate-x-1 transition-transform"></i>
+                </a>
+                <a href="#projects" class="px-8 py-4 border-2 border-gold-500/50 text-gold-400 font-semibold rounded-full hover:bg-gold-500/10 hover:border-gold-400 transition-all duration-300 flex items-center space-x-2">
+                    <span>View Projects</span>
+                    <i data-lucide="play" class="w-5 h-5"></i>
+                </a>
+            </div>
+
+            <!-- Floating Statistics -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8 max-w-4xl mx-auto reveal">
+                <div class="glass rounded-2xl p-6 text-center group hover:border-gold-500/30 transition-all duration-300">
+                    <div class="text-3xl md:text-4xl font-display font-bold text-gold-400 mb-2">
+                        <span class="counter-value" data-target="500">0</span>+
+                    </div>
+                    <div class="text-sm text-gray-400">Projects Completed</div>
+                </div>
+                <div class="glass rounded-2xl p-6 text-center group hover:border-gold-500/30 transition-all duration-300">
+                    <div class="text-3xl md:text-4xl font-display font-bold text-gold-400 mb-2">
+                        <span class="counter-value" data-target="10">0</span>+
+                    </div>
+                    <div class="text-sm text-gray-400">Years Experience</div>
+                </div>
+                <div class="glass rounded-2xl p-6 text-center group hover:border-gold-500/30 transition-all duration-300">
+                    <div class="text-3xl md:text-4xl font-display font-bold text-gold-400 mb-2">
+                        <span class="counter-value" data-target="4.8" data-decimal="1">0</span>
+                    </div>
+                    <div class="text-sm text-gray-400">Google Rating</div>
+                </div>
+                <div class="glass rounded-2xl p-6 text-center group hover:border-gold-500/30 transition-all duration-300">
+                    <div class="text-3xl md:text-4xl font-display font-bold text-gold-400 mb-2">
+                        <span class="counter-value" data-target="100">0</span>%
+                    </div>
+                    <div class="text-sm text-gray-400">Client Satisfaction</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Scroll Indicator -->
+        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+            <div class="w-6 h-10 border-2 border-gold-400/50 rounded-full flex justify-center">
+                <div class="w-1.5 h-3 bg-gold-400 rounded-full mt-2 animate-pulse"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="relative py-24 lg:py-32 overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-b from-charcoal-900 via-charcoal-800 to-charcoal-900"></div>
+
+        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+                <!-- Left: Image -->
+                <div class="relative reveal-left">
+                    <div class="relative">
+                        <div class="absolute -inset-4 bg-gradient-to-r from-gold-500/20 to-gold-600/20 rounded-3xl blur-2xl"></div>
+                        <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=800&q=80" 
+                             alt="HS Interiors Design Team" 
+                             class="relative rounded-2xl shadow-2xl w-full object-cover h-[500px] lg:h-[600px]">
+
+                        <!-- Experience Badge -->
+                        <div class="absolute -bottom-6 -right-6 glass-dark rounded-2xl p-6 shadow-2xl">
+                            <div class="text-4xl font-display font-bold text-gold-400">10+</div>
+                            <div class="text-sm text-gray-300">Years of Excellence</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right: Content -->
+                <div class="reveal-right">
+                    <div class="inline-flex items-center space-x-2 px-4 py-2 rounded-full glass mb-6">
+                        <span class="text-sm text-gold-300 tracking-wider uppercase">About Us</span>
+                    </div>
+
+                    <h2 class="section-title font-display text-4xl lg:text-5xl font-bold text-white mb-6">
+                        Crafting Spaces That<br>
+                        <span class="text-gold-gradient">Inspire & Delight</span>
+                    </h2>
+
+                    <p class="text-gray-400 text-lg leading-relaxed mb-8">
+                        We are a team of passionate interior designers helping families and businesses create functional and beautiful spaces. Our expertise spans residential and commercial interiors across Pune, from cozy apartments to luxury villas.
+                    </p>
+
+                    <!-- Highlights -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
+                        <div class="flex items-start space-x-3 group">
+                            <div class="w-10 h-10 rounded-lg bg-gold-500/10 flex items-center justify-center flex-shrink-0 group-hover:bg-gold-500/20 transition-colors">
+                                <i data-lucide="check-circle" class="w-5 h-5 text-gold-400"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-white">End-to-End Design</h4>
+                                <p class="text-sm text-gray-500">Complete project management</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-3 group">
+                            <div class="w-10 h-10 rounded-lg bg-gold-500/10 flex items-center justify-center flex-shrink-0 group-hover:bg-gold-500/20 transition-colors">
+                                <i data-lucide="check-circle" class="w-5 h-5 text-gold-400"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-white">Custom Furniture</h4>
+                                <p class="text-sm text-gray-500">Tailored to your needs</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-3 group">
+                            <div class="w-10 h-10 rounded-lg bg-gold-500/10 flex items-center justify-center flex-shrink-0 group-hover:bg-gold-500/20 transition-colors">
+                                <i data-lucide="check-circle" class="w-5 h-5 text-gold-400"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-white">On-Time Delivery</h4>
+                                <p class="text-sm text-gray-500">Strict timeline adherence</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-3 group">
+                            <div class="w-10 h-10 rounded-lg bg-gold-500/10 flex items-center justify-center flex-shrink-0 group-hover:bg-gold-500/20 transition-colors">
+                                <i data-lucide="check-circle" class="w-5 h-5 text-gold-400"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-white">Premium Materials</h4>
+                                <p class="text-sm text-gray-500">Only the best quality</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-3 group">
+                            <div class="w-10 h-10 rounded-lg bg-gold-500/10 flex items-center justify-center flex-shrink-0 group-hover:bg-gold-500/20 transition-colors">
+                                <i data-lucide="check-circle" class="w-5 h-5 text-gold-400"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-white">Transparent Pricing</h4>
+                                <p class="text-sm text-gray-500">No hidden costs</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <a href="#contact" class="inline-flex items-center space-x-2 text-gold-400 font-semibold hover:text-gold-300 transition-colors group">
+                        <span>Start Your Project</span>
+                        <i data-lucide="arrow-right" class="w-5 h-5 group-hover:translate-x-2 transition-transform"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Divider -->
+    <div class="section-divider max-w-4xl mx-auto"></div>
+
+    <!-- Services Section -->
+    <section id="services" class="relative py-24 lg:py-32">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <!-- Section Header -->
+            <div class="text-center mb-16 reveal">
+                <div class="inline-flex items-center space-x-2 px-4 py-2 rounded-full glass mb-6">
+                    <span class="text-sm text-gold-300 tracking-wider uppercase">Our Services</span>
+                </div>
+                <h2 class="section-title font-display text-4xl lg:text-5xl font-bold text-white mb-4">
+                    Premium Design <span class="text-gold-gradient">Services</span>
+                </h2>
+                <p class="text-gray-400 text-lg max-w-2xl mx-auto">
+                    From concept to completion, we offer comprehensive interior design solutions tailored to your lifestyle and budget.
+                </p>
+            </div>
+
+            <!-- Services Grid -->
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Service 1: Modular Kitchen -->
+                <div class="service-card group relative overflow-hidden rounded-2xl glass cursor-pointer reveal">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=600&q=80" 
+                             alt="Modular Kitchen Design" 
+                             class="card-image w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-charcoal-900 via-charcoal-900/50 to-transparent"></div>
+                        <div class="absolute top-4 left-4 w-12 h-12 rounded-xl bg-gold-500/20 backdrop-blur-sm flex items-center justify-center">
+                            <i data-lucide="chef-hat" class="w-6 h-6 text-gold-400"></i>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-display text-xl font-bold text-white mb-2 group-hover:text-gold-400 transition-colors">Modular Kitchen</h3>
+                        <p class="text-gray-400 text-sm mb-4">Custom kitchen designs with smart storage solutions and premium finishes.</p>
+                        <a href="#contact" class="inline-flex items-center space-x-2 text-gold-400 text-sm font-medium group-hover:text-gold-300 transition-colors">
+                            <span>Learn More</span>
+                            <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Service 2: Living Room -->
+                <div class="service-card group relative overflow-hidden rounded-2xl glass cursor-pointer reveal">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=600&q=80" 
+                             alt="Living Room Design" 
+                             class="card-image w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-charcoal-900 via-charcoal-900/50 to-transparent"></div>
+                        <div class="absolute top-4 left-4 w-12 h-12 rounded-xl bg-gold-500/20 backdrop-blur-sm flex items-center justify-center">
+                            <i data-lucide="sofa" class="w-6 h-6 text-gold-400"></i>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-display text-xl font-bold text-white mb-2 group-hover:text-gold-400 transition-colors">Living Room Design</h3>
+                        <p class="text-gray-400 text-sm mb-4">Elegant living spaces designed for comfort, style, and entertainment.</p>
+                        <a href="#contact" class="inline-flex items-center space-x-2 text-gold-400 text-sm font-medium group-hover:text-gold-300 transition-colors">
+                            <span>Learn More</span>
+                            <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Service 3: Bedroom -->
+                <div class="service-card group relative overflow-hidden rounded-2xl glass cursor-pointer reveal">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1616594039964-ae9021a400a0?w=600&q=80" 
+                             alt="Bedroom Design" 
+                             class="card-image w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-charcoal-900 via-charcoal-900/50 to-transparent"></div>
+                        <div class="absolute top-4 left-4 w-12 h-12 rounded-xl bg-gold-500/20 backdrop-blur-sm flex items-center justify-center">
+                            <i data-lucide="bed" class="w-6 h-6 text-gold-400"></i>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-display text-xl font-bold text-white mb-2 group-hover:text-gold-400 transition-colors">Bedroom Design</h3>
+                        <p class="text-gray-400 text-sm mb-4">Serene and luxurious bedrooms that promote rest and relaxation.</p>
+                        <a href="#contact" class="inline-flex items-center space-x-2 text-gold-400 text-sm font-medium group-hover:text-gold-300 transition-colors">
+                            <span>Learn More</span>
+                            <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Service 4: False Ceiling -->
+                <div class="service-card group relative overflow-hidden rounded-2xl glass cursor-pointer reveal">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=600&q=80" 
+                             alt="False Ceiling Design" 
+                             class="card-image w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-charcoal-900 via-charcoal-900/50 to-transparent"></div>
+                        <div class="absolute top-4 left-4 w-12 h-12 rounded-xl bg-gold-500/20 backdrop-blur-sm flex items-center justify-center">
+                            <i data-lucide="layers" class="w-6 h-6 text-gold-400"></i>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-display text-xl font-bold text-white mb-2 group-hover:text-gold-400 transition-colors">False Ceiling</h3>
+                        <p class="text-gray-400 text-sm mb-4">Innovative ceiling designs with integrated lighting and acoustic solutions.</p>
+                        <a href="#contact" class="inline-flex items-center space-x-2 text-gold-400 text-sm font-medium group-hover:text-gold-300 transition-colors">
+                            <span>Learn More</span>
+                            <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Service 5: Wardrobe -->
+                <div class="service-card group relative overflow-hidden rounded-2xl glass cursor-pointer reveal">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1595526114035-0d45ed16cfbf?w=600&q=80" 
+                             alt="Wardrobe Solutions" 
+                             class="card-image w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-charcoal-900 via-charcoal-900/50 to-transparent"></div>
+                        <div class="absolute top-4 left-4 w-12 h-12 rounded-xl bg-gold-500/20 backdrop-blur-sm flex items-center justify-center">
+                            <i data-lucide="shirt" class="w-6 h-6 text-gold-400"></i>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-display text-xl font-bold text-white mb-2 group-hover:text-gold-400 transition-colors">Wardrobe Solutions</h3>
+                        <p class="text-gray-400 text-sm mb-4">Custom wardrobe designs maximizing storage with elegant aesthetics.</p>
+                        <a href="#contact" class="inline-flex items-center space-x-2 text-gold-400 text-sm font-medium group-hover:text-gold-300 transition-colors">
+                            <span>Learn More</span>
+                            <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Service 6: Office Interiors -->
+                <div class="service-card group relative overflow-hidden rounded-2xl glass cursor-pointer reveal">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=600&q=80" 
+                             alt="Office Interiors" 
+                             class="card-image w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-charcoal-900 via-charcoal-900/50 to-transparent"></div>
+                        <div class="absolute top-4 left-4 w-12 h-12 rounded-xl bg-gold-500/20 backdrop-blur-sm flex items-center justify-center">
+                            <i data-lucide="briefcase" class="w-6 h-6 text-gold-400"></i>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-display text-xl font-bold text-white mb-2 group-hover:text-gold-400 transition-colors">Office Interiors</h3>
+                        <p class="text-gray-400 text-sm mb-4">Productive and inspiring workspaces designed for modern businesses.</p>
+                        <a href="#contact" class="inline-flex items-center space-x-2 text-gold-400 text-sm font-medium group-hover:text-gold-300 transition-colors">
+                            <span>Learn More</span>
+                            <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Service 7: Commercial -->
+                <div class="service-card group relative overflow-hidden rounded-2xl glass cursor-pointer reveal">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=600&q=80" 
+                             alt="Commercial Interiors" 
+                             class="card-image w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-charcoal-900 via-charcoal-900/50 to-transparent"></div>
+                        <div class="absolute top-4 left-4 w-12 h-12 rounded-xl bg-gold-500/20 backdrop-blur-sm flex items-center justify-center">
+                            <i data-lucide="store" class="w-6 h-6 text-gold-400"></i>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-display text-xl font-bold text-white mb-2 group-hover:text-gold-400 transition-colors">Commercial Interiors</h3>
+                        <p class="text-gray-400 text-sm mb-4">Retail and hospitality spaces that captivate customers and drive business.</p>
+                        <a href="#contact" class="inline-flex items-center space-x-2 text-gold-400 text-sm font-medium group-hover:text-gold-300 transition-colors">
+                            <span>Learn More</span>
+                            <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Service 8: Renovation -->
+                <div class="service-card group relative overflow-hidden rounded-2xl glass cursor-pointer reveal">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=600&q=80" 
+                             alt="Renovation Services" 
+                             class="card-image w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-charcoal-900 via-charcoal-900/50 to-transparent"></div>
+                        <div class="absolute top-4 left-4 w-12 h-12 rounded-xl bg-gold-500/20 backdrop-blur-sm flex items-center justify-center">
+                            <i data-lucide="hammer" class="w-6 h-6 text-gold-400"></i>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-display text-xl font-bold text-white mb-2 group-hover:text-gold-400 transition-colors">Renovation Services</h3>
+                        <p class="text-gray-400 text-sm mb-4">Complete home and office renovations with modern upgrades and finishes.</p>
+                        <a href="#contact" class="inline-flex items-center space-x-2 text-gold-400 text-sm font-medium group-hover:text-gold-300 transition-colors">
+                            <span>Learn More</span>
+                            <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us Section -->
+    <section id="why-us" class="relative py-24 lg:py-32 bg-charcoal-950">
+        <div class="absolute inset-0 opacity-30" style="background-image: radial-gradient(circle at 1px 1px, rgba(212, 175, 55, 0.15) 1px, transparent 0); background-size: 40px 40px;"></div>
+
+        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 reveal">
+                <div class="inline-flex items-center space-x-2 px-4 py-2 rounded-full glass mb-6">
+                    <span class="text-sm text-gold-300 tracking-wider uppercase">Why Choose Us</span>
+                </div>
+                <h2 class="section-title font-display text-4xl lg:text-5xl font-bold text-white mb-4">
+                    The <span class="text-gold-gradient">HS Interiors</span> Advantage
+                </h2>
+                <p class="text-gray-400 text-lg max-w-2xl mx-auto">
+                    We combine creativity, craftsmanship, and commitment to deliver interiors that exceed expectations.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Feature 1 -->
+                <div class="group relative p-8 rounded-2xl glass hover:border-gold-500/30 transition-all duration-500 reveal">
+                    <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-gold-500/20 to-gold-600/10 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                        <i data-lucide="users" class="w-8 h-8 text-gold-400"></i>
+                    </div>
+                    <h3 class="font-display text-xl font-bold text-white mb-3">Expert Designers</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">Certified interior designers with 10+ years of experience in residential and commercial projects.</p>
+                </div>
+
+                <!-- Feature 2 -->
+                <div class="group relative p-8 rounded-2xl glass hover:border-gold-500/30 transition-all duration-500 reveal">
+                    <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-gold-500/20 to-gold-600/10 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                        <i data-lucide="gem" class="w-8 h-8 text-gold-400"></i>
+                    </div>
+                    <h3 class="font-display text-xl font-bold text-white mb-3">Quality Materials</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">We source only premium materials from trusted suppliers with warranty and durability assurance.</p>
+                </div>
+
+                <!-- Feature 3 -->
+                <div class="group relative p-8 rounded-2xl glass hover:border-gold-500/30 transition-all duration-500 reveal">
+                    <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-gold-500/20 to-gold-600/10 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                        <i data-lucide="wallet" class="w-8 h-8 text-gold-400"></i>
+                    </div>
+                    <h3 class="font-display text-xl font-bold text-white mb-3">Affordable Pricing</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">Competitive pricing with transparent quotes. No hidden charges or surprise costs at any stage.</p>
+                </div>
+
+                <!-- Feature 4 -->
+                <div class="group relative p-8 rounded-2xl glass hover:border-gold-500/30 transition-all duration-500 reveal">
+                    <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-gold-500/20 to-gold-600/10 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                        <i data-lucide="clock" class="w-8 h-8 text-gold-400"></i>
+                    </div>
+                    <h3 class="font-display text-xl font-bold text-white mb-3">On-Time Delivery</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">Strict project timelines with dedicated project managers ensuring timely completion every time.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Portfolio Section -->
+    <section id="projects" class="relative py-24 lg:py-32">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 reveal">
+                <div class="inline-flex items-center space-x-2 px-4 py-2 rounded-full glass mb-6">
+                    <span class="text-sm text-gold-300 tracking-wider uppercase">Portfolio</span>
+                </div>
+                <h2 class="section-title font-display text-4xl lg:text-5xl font-bold text-white mb-4">
+                    Our <span class="text-gold-gradient">Featured Projects</span>
+                </h2>
+                <p class="text-gray-400 text-lg max-w-2xl mx-auto">
+                    Browse through our portfolio of completed projects across Pune and nearby areas.
+                </p>
+            </div>
+
+            <!-- Category Filter -->
+            <div class="flex flex-wrap justify-center gap-3 mb-12 reveal">
+                <button class="filter-btn active px-6 py-2.5 rounded-full text-sm font-medium bg-gold-500 text-charcoal-900 transition-all duration-300" data-filter="all">All Projects</button>
+                <button class="filter-btn px-6 py-2.5 rounded-full text-sm font-medium border border-gold-500/30 text-gold-400 hover:bg-gold-500/10 transition-all duration-300" data-filter="2bhk">2BHK</button>
+                <button class="filter-btn px-6 py-2.5 rounded-full text-sm font-medium border border-gold-500/30 text-gold-400 hover:bg-gold-500/10 transition-all duration-300" data-filter="3bhk">3BHK</button>
+                <button class="filter-btn px-6 py-2.5 rounded-full text-sm font-medium border border-gold-500/30 text-gold-400 hover:bg-gold-500/10 transition-all duration-300" data-filter="villa">Villas</button>
+                <button class="filter-btn px-6 py-2.5 rounded-full text-sm font-medium border border-gold-500/30 text-gold-400 hover:bg-gold-500/10 transition-all duration-300" data-filter="kitchen">Kitchens</button>
+                <button class="filter-btn px-6 py-2.5 rounded-full text-sm font-medium border border-gold-500/30 text-gold-400 hover:bg-gold-500/10 transition-all duration-300" data-filter="commercial">Commercial</button>
+            </div>
+
+            <!-- Portfolio Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="portfolioGrid">
+                <!-- Project 1 -->
+                <div class="portfolio-item group relative rounded-2xl overflow-hidden cursor-pointer reveal" data-category="3bhk">
+                    <div class="relative aspect-[4/5] overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=600&q=80" 
+                             alt="3BHK Apartment - Kharadi" 
+                             class="portfolio-image w-full h-full object-cover">
+                        <div class="portfolio-overlay absolute inset-0 bg-gradient-to-t from-charcoal-900 via-charcoal-900/70 to-transparent flex flex-col justify-end p-6">
+                            <span class="text-gold-400 text-sm font-medium mb-2">3BHK Apartment</span>
+                            <h3 class="font-display text-xl font-bold text-white mb-2">Luxury 3BHK - Kharadi</h3>
+                            <p class="text-gray-300 text-sm mb-4">Complete interior transformation with modern aesthetics and smart storage.</p>
+                            <div class="flex items-center space-x-4 text-sm text-gray-400">
+                                <span class="flex items-center space-x-1">
+                                    <i data-lucide="map-pin" class="w-4 h-4"></i>
+                                    <span>Kharadi, Pune</span>
+                                </span>
+                                <span class="flex items-center space-x-1">
+                                    <i data-lucide="calendar" class="w-4 h-4"></i>
+                                    <span>2025</span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="portfolio-item group relative rounded-2xl overflow-hidden cursor-pointer reveal" data-category="villa">
+                    <div class="relative aspect-[4/5] overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=600&q=80" 
+                             alt="Villa Interior - Baner" 
+                             class="portfolio-image w-full h-full object-cover">
+                        <div class="portfolio-overlay absolute inset-0 bg-gradient-to-t from-charcoal-900 via-charcoal-900/70 to-transparent flex flex-col justify-end p-6">
+                            <span class="text-gold-400 text-sm font-medium mb-2">Villa</span>
+                            <h3 class="font-display text-xl font-bold text-white mb-2">Premium Villa - Baner</h3>
+                            <p class="text-gray-300 text-sm mb-4">Luxury villa interiors with Italian marble and custom woodwork.</p>
+                            <div class="flex items-center space-x-4 text-sm text-gray-400">
+                                <span class="flex items-center space-x-1">
+                                    <i data-lucide="map-pin" class="w-4 h-4"></i>
+                                    <span>Baner, Pune</span>
+                                </span>
+                                <span class="flex items-center space-x-1">
+                                    <i data-lucide="calendar" class="w-4 h-4"></i>
+                                    <span>2025</span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="portfolio-item group relative rounded-2xl overflow-hidden cursor-pointer reveal" data-category="kitchen">
+                    <div class="relative aspect-[4/5] overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1556909114-44e3e70034e2?w=600&q=80" 
+                             alt="Modular Kitchen - Wakad" 
+                             class="portfolio-image w-full h-full object-cover">
+                        <div class="portfolio-overlay absolute inset-0 bg-gradient-to-t from-charcoal-900 via-charcoal-900/70 to-transparent flex flex-col justify-end p-6">
+                            <span class="text-gold-400 text-sm font-medium mb-2">Modular Kitchen</span>
+                            <h3 class="font-display text-xl font-bold text-white mb-2">Modern Kitchen - Wakad</h3>
+                            <p class="text-gray-300 text-sm mb-4">Contemporary kitchen with island counter and premium appliances.</p>
+                            <div class="flex items-center space-x-4 text-sm text-gray-400">
+                                <span class="flex items-center space-x-1">
+                                    <i data-lucide="map-pin" class="w-4 h-4"></i>
+                                    <span>Wakad, Pune</span>
+                                </span>
+                                <span class="flex items-center space-x-1">
+                                    <i data-lucide="calendar" class="w-4 h-4"></i>
+                                    <span>2025</span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 4 -->
+                <div class="portfolio-item group relative rounded-2xl overflow-hidden cursor-pointer reveal" data-category="2bhk">
+                    <div class="relative aspect-[4/5] overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1600607687644-c7171b42498f?w=600&q=80" 
+                             alt="2BHK Apartment - Hinjewadi" 
+                             class="portfolio-image w-full h-full object-cover">
+                        <div class="portfolio-overlay absolute inset-0 bg-gradient-to-t from-charcoal-900 via-charcoal-900/70 to-transparent flex flex-col justify-end p-6">
+                            <span class="text-gold-400 text-sm font-medium mb-2">2BHK Apartment</span>
+                            <h3 class="font-display text-xl font-bold text-white mb-2">Cozy 2BHK - Hinjewadi</h3>
+                            <p class="text-gray-300 text-sm mb-4">Space-efficient design maximizing every square foot elegantly.</p>
+                            <div class="flex items-center space-x-4 text-sm text-gray-400">
+                                <span class="flex items-center space-x-1">
+                                    <i data-lucide="map-pin" class="w-4 h-4"></i>
+                                    <span>Hinjewadi, Pune</span>
+                                </span>
+                                <span class="flex items-center space-x-1">
+                                    <i data-lucide="calendar" class="w-4 h-4"></i>
+                                    <span>2024</span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 5 -->
+                <div class="portfolio-item group relative rounded-2xl overflow-hidden cursor-pointer reveal" data-category="commercial">
+                    <div class="relative aspect-[4/5] overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1497366811353-6870744d04b2?w=600&q=80" 
+                             alt="Office Space - Magarpatta" 
+                             class="portfolio-image w-full h-full object-cover">
+                        <div class="portfolio-overlay absolute inset-0 bg-gradient-to-t from-charcoal-900 via-charcoal-900/70 to-transparent flex flex-col justify-end p-6">
+                            <span class="text-gold-400 text-sm font-medium mb-2">Commercial</span>
+                            <h3 class="font-display text-xl font-bold text-white mb-2">IT Office - Magarpatta</h3>
+                            <p class="text-gray-300 text-sm mb-4">Modern office space designed for productivity and collaboration.</p>
+                            <div class="flex items-center space-x-4 text-sm text-gray-400">
+                                <span class="flex items-center space-x-1">
+                                    <i data-lucide="map-pin" class="w-4 h-4"></i>
+                                    <span>Magarpatta, Pune</span>
+                                </span>
+                                <span class="flex items-center space-x-1">
+                                    <i data-lucide="calendar" class="w-4 h-4"></i>
+                                    <span>2025</span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 6 -->
+                <div class="portfolio-item group relative rounded-2xl overflow-hidden cursor-pointer reveal" data-category="3bhk">
+                    <div class="relative aspect-[4/5] overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1600573472592-401b489a3cdc?w=600&q=80" 
+                             alt="3BHK Apartment - Aundh" 
+                             class="portfolio-image w-full h-full object-cover">
+                        <div class="portfolio-overlay absolute inset-0 bg-gradient-to-t from-charcoal-900 via-charcoal-900/70 to-transparent flex flex-col justify-end p-6">
+                            <span class="text-gold-400 text-sm font-medium mb-2">3BHK Apartment</span>
+                            <h3 class="font-display text-xl font-bold text-white mb-2">Elegant 3BHK - Aundh</h3>
+                            <p class="text-gray-300 text-sm mb-4">Sophisticated interiors with warm tones and luxurious finishes.</p>
+                            <div class="flex items-center space-x-4 text-sm text-gray-400">
+                                <span class="flex items-center space-x-1">
+                                    <i data-lucide="map-pin" class="w-4 h-4"></i>
+                                    <span>Aundh, Pune</span>
+                                </span>
+                                <span class="flex items-center space-x-1">
+                                    <i data-lucide="calendar" class="w-4 h-4"></i>
+                                    <span>2024</span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 7 -->
+                <div class="portfolio-item group relative rounded-2xl overflow-hidden cursor-pointer reveal" data-category="villa">
+                    <div class="relative aspect-[4/5] overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=600&q=80" 
+                             alt="Villa - Kalyani Nagar" 
+                             class="portfolio-image w-full h-full object-cover">
+                        <div class="portfolio-overlay absolute inset-0 bg-gradient-to-t from-charcoal-900 via-charcoal-900/70 to-transparent flex flex-col justify-end p-6">
+                            <span class="text-gold-400 text-sm font-medium mb-2">Villa</span>
+                            <h3 class="font-display text-xl font-bold text-white mb-2">Grand Villa - Kalyani Nagar</h3>
+                            <p class="text-gray-300 text-sm mb-4">Opulent villa with double height ceiling and designer furniture.</p>
+                            <div class="flex items-center space-x-4 text-sm text-gray-400">
+                                <span class="flex items-center space-x-1">
+                                    <i data-lucide="map-pin" class="w-4 h-4"></i>
+                                    <span>Kalyani Nagar, Pune</span>
+                                </span>
+                                <span class="flex items-center space-x-1">
+                                    <i data-lucide="calendar" class="w-4 h-4"></i>
+                                    <span>2025</span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 8 -->
+                <div class="portfolio-item group relative rounded-2xl overflow-hidden cursor-pointer reveal" data-category="kitchen">
+                    <div class="relative aspect-[4/5] overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=600&q=80" 
+                             alt="Kitchen - Koregaon Park" 
+                             class="portfolio-image w-full h-full object-cover">
+                        <div class="portfolio-overlay absolute inset-0 bg-gradient-to-t from-charcoal-900 via-charcoal-900/70 to-transparent flex flex-col justify-end p-6">
+                            <span class="text-gold-400 text-sm font-medium mb-2">Modular Kitchen</span>
+                            <h3 class="font-display text-xl font-bold text-white mb-2">Designer Kitchen - Koregaon Park</h3>
+                            <p class="text-gray-300 text-sm mb-4">Premium modular kitchen with quartz countertops and smart storage.</p>
+                            <div class="flex items-center space-x-4 text-sm text-gray-400">
+                                <span class="flex items-center space-x-1">
+                                    <i data-lucide="map-pin" class="w-4 h-4"></i>
+                                    <span>Koregaon Park, Pune</span>
+                                </span>
+                                <span class="flex items-center space-x-1">
+                                    <i data-lucide="calendar" class="w-4 h-4"></i>
+                                    <span>2024</span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 9 -->
+                <div class="portfolio-item group relative rounded-2xl overflow-hidden cursor-pointer reveal" data-category="2bhk">
+                    <div class="relative aspect-[4/5] overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1600210491892-03d54c0aaf87?w=600&q=80" 
+                             alt="2BHK - Viman Nagar" 
+                             class="portfolio-image w-full h-full object-cover">
+                        <div class="portfolio-overlay absolute inset-0 bg-gradient-to-t from-charcoal-900 via-charcoal-900/70 to-transparent flex flex-col justify-end p-6">
+                            <span class="text-gold-400 text-sm font-medium mb-2">2BHK Apartment</span>
+                            <h3 class="font-display text-xl font-bold text-white mb-2">Modern 2BHK - Viman Nagar</h3>
+                            <p class="text-gray-300 text-sm mb-4">Contemporary design with open plan living and smart home features.</p>
+                            <div class="flex items-center space-x-4 text-sm text-gray-400">
+                                <span class="flex items-center space-x-1">
+                                    <i data-lucide="map-pin" class="w-4 h-4"></i>
+                                    <span>Viman Nagar, Pune</span>
+                                </span>
+                                <span class="flex items-center space-x-1">
+                                    <i data-lucide="calendar" class="w-4 h-4"></i>
+                                    <span>2025</span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 10 -->
+                <div class="portfolio-item group relative rounded-2xl overflow-hidden cursor-pointer reveal" data-category="commercial">
+                    <div class="relative aspect-[4/5] overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=600&q=80" 
+                             alt="Retail Store - FC Road" 
+                             class="portfolio-image w-full h-full object-cover">
+                        <div class="portfolio-overlay absolute inset-0 bg-gradient-to-t from-charcoal-900 via-charcoal-900/70 to-transparent flex flex-col justify-end p-6">
+                            <span class="text-gold-400 text-sm font-medium mb-2">Commercial</span>
+                            <h3 class="font-display text-xl font-bold text-white mb-2">Retail Store - FC Road</h3>
+                            <p class="text-gray-300 text-sm mb-4">Eye-catching retail interior designed to maximize customer engagement.</p>
+                            <div class="flex items-center space-x-4 text-sm text-gray-400">
+                                <span class="flex items-center space-x-1">
+                                    <i data-lucide="map-pin" class="w-4 h-4"></i>
+                                    <span>FC Road, Pune</span>
+                                </span>
+                                <span class="flex items-center space-x-1">
+                                    <i data-lucide="calendar" class="w-4 h-4"></i>
+                                    <span>2024</span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 11 -->
+                <div class="portfolio-item group relative rounded-2xl overflow-hidden cursor-pointer reveal" data-category="villa">
+                    <div class="relative aspect-[4/5] overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?w=600&q=80" 
+                             alt="Villa - Boat Club Road" 
+                             class="portfolio-image w-full h-full object-cover">
+                        <div class="portfolio-overlay absolute inset-0 bg-gradient-to-t from-charcoal-900 via-charcoal-900/70 to-transparent flex flex-col justify-end p-6">
+                            <span class="text-gold-400 text-sm font-medium mb-2">Villa</span>
+                            <h3 class="font-display text-xl font-bold text-white mb-2">Luxury Villa - Boat Club Road</h3>
+                            <p class="text-gray-300 text-sm mb-4">Ultra-luxury villa with imported marble and custom lighting design.</p>
+                            <div class="flex items-center space-x-4 text-sm text-gray-400">
+                                <span class="flex items-center space-x-1">
+                                    <i data-lucide="map-pin" class="w-4 h-4"></i>
+                                    <span>Boat Club Road, Pune</span>
+                                </span>
+                                <span class="flex items-center space-x-1">
+                                    <i data-lucide="calendar" class="w-4 h-4"></i>
+                                    <span>2025</span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 12 -->
+                <div class="portfolio-item group relative rounded-2xl overflow-hidden cursor-pointer reveal" data-category="3bhk">
+                    <div class="relative aspect-[4/5] overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?w=600&q=80" 
+                             alt="3BHK - Kothrud" 
+                             class="portfolio-image w-full h-full object-cover">
+                        <div class="portfolio-overlay absolute inset-0 bg-gradient-to-t from-charcoal-900 via-charcoal-900/70 to-transparent flex flex-col justify-end p-6">
+                            <span class="text-gold-400 text-sm font-medium mb-2">3BHK Apartment</span>
+                            <h3 class="font-display text-xl font-bold text-white mb-2">Premium 3BHK - Kothrud</h3>
+                            <p class="text-gray-300 text-sm mb-4">Family-friendly design with kid-friendly spaces and ample storage.</p>
+                            <div class="flex items-center space-x-4 text-sm text-gray-400">
+                                <span class="flex items-center space-x-1">
+                                    <i data-lucide="map-pin" class="w-4 h-4"></i>
+                                    <span>Kothrud, Pune</span>
+                                </span>
+                                <span class="flex items-center space-x-1">
+                                    <i data-lucide="calendar" class="w-4 h-4"></i>
+                                    <span>2024</span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section id="process" class="relative py-24 lg:py-32 bg-charcoal-950">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 reveal">
+                <div class="inline-flex items-center space-x-2 px-4 py-2 rounded-full glass mb-6">
+                    <span class="text-sm text-gold-300 tracking-wider uppercase">Our Process</span>
+                </div>
+                <h2 class="section-title font-display text-4xl lg:text-5xl font-bold text-white mb-4">
+                    How We <span class="text-gold-gradient">Work</span>
+                </h2>
+                <p class="text-gray-400 text-lg max-w-2xl mx-auto">
+                    A streamlined 5-step process designed to deliver your dream space on time and within budget.
+                </p>
+            </div>
+
+            <!-- Timeline -->
+            <div class="relative">
+                <!-- Timeline Line -->
+                <div class="absolute left-1/2 transform -translate-x-1/2 w-1 h-full bg-gradient-to-b from-gold-500 via-gold-600 to-gold-500 hidden md:block"></div>
+
+                <!-- Step 1 -->
+                <div class="relative mb-12 md:mb-0 reveal">
+                    <div class="grid md:grid-cols-2 gap-8 items-center">
+                        <div class="md:text-right md:pr-12">
+                            <div class="glass rounded-2xl p-8 hover:border-gold-500/30 transition-all duration-300">
+                                <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-gold-500 to-gold-600 flex items-center justify-center mb-4 md:ml-auto">
+                                    <i data-lucide="message-circle" class="w-7 h-7 text-charcoal-900"></i>
+                                </div>
+                                <h3 class="font-display text-2xl font-bold text-white mb-3">1. Consultation</h3>
+                                <p class="text-gray-400">We begin with understanding your vision, requirements, budget, and timeline. Our designers visit your space for accurate measurements.</p>
+                            </div>
+                        </div>
+                        <div class="hidden md:block"></div>
+                    </div>
+                    <!-- Timeline Dot -->
+                    <div class="absolute left-1/2 transform -translate-x-1/2 top-8 w-6 h-6 rounded-full bg-gold-500 border-4 border-charcoal-950 hidden md:block"></div>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="relative mb-12 md:mb-0 reveal">
+                    <div class="grid md:grid-cols-2 gap-8 items-center">
+                        <div class="hidden md:block"></div>
+                        <div class="md:pl-12">
+                            <div class="glass rounded-2xl p-8 hover:border-gold-500/30 transition-all duration-300">
+                                <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-gold-500 to-gold-600 flex items-center justify-center mb-4">
+                                    <i data-lucide="pencil-ruler" class="w-7 h-7 text-charcoal-900"></i>
+                                </div>
+                                <h3 class="font-display text-2xl font-bold text-white mb-3">2. Design Planning</h3>
+                                <p class="text-gray-400">Our team creates detailed floor plans, mood boards, and material selections tailored to your style and functional needs.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="absolute left-1/2 transform -translate-x-1/2 top-8 w-6 h-6 rounded-full bg-gold-500 border-4 border-charcoal-950 hidden md:block"></div>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="relative mb-12 md:mb-0 reveal">
+                    <div class="grid md:grid-cols-2 gap-8 items-center">
+                        <div class="md:text-right md:pr-12">
+                            <div class="glass rounded-2xl p-8 hover:border-gold-500/30 transition-all duration-300">
+                                <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-gold-500 to-gold-600 flex items-center justify-center mb-4 md:ml-auto">
+                                    <i data-lucide="box" class="w-7 h-7 text-charcoal-900"></i>
+                                </div>
+                                <h3 class="font-display text-2xl font-bold text-white mb-3">3. 3D Visualization</h3>
+                                <p class="text-gray-400">Experience your space before construction with photorealistic 3D renders. Make changes and finalize every detail.</p>
+                            </div>
+                        </div>
+                        <div class="hidden md:block"></div>
+                    </div>
+                    <div class="absolute left-1/2 transform -translate-x-1/2 top-8 w-6 h-6 rounded-full bg-gold-500 border-4 border-charcoal-950 hidden md:block"></div>
+                </div>
+
+                <!-- Step 4 -->
+                <div class="relative mb-12 md:mb-0 reveal">
+                    <div class="grid md:grid-cols-2 gap-8 items-center">
+                        <div class="hidden md:block"></div>
+                        <div class="md:pl-12">
+                            <div class="glass rounded-2xl p-8 hover:border-gold-500/30 transition-all duration-300">
+                                <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-gold-500 to-gold-600 flex items-center justify-center mb-4">
+                                    <i data-lucide="hard-hat" class="w-7 h-7 text-charcoal-900"></i>
+                                </div>
+                                <h3 class="font-display text-2xl font-bold text-white mb-3">4. Execution</h3>
+                                <p class="text-gray-400">Skilled craftsmen bring designs to life with precision. Regular site visits and quality checks ensure perfection.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="absolute left-1/2 transform -translate-x-1/2 top-8 w-6 h-6 rounded-full bg-gold-500 border-4 border-charcoal-950 hidden md:block"></div>
+                </div>
+
+                <!-- Step 5 -->
+                <div class="relative reveal">
+                    <div class="grid md:grid-cols-2 gap-8 items-center">
+                        <div class="md:text-right md:pr-12">
+                            <div class="glass rounded-2xl p-8 hover:border-gold-500/30 transition-all duration-300">
+                                <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-gold-500 to-gold-600 flex items-center justify-center mb-4 md:ml-auto">
+                                    <i data-lucide="check-circle-2" class="w-7 h-7 text-charcoal-900"></i>
+                                </div>
+                                <h3 class="font-display text-2xl font-bold text-white mb-3">5. Final Delivery</h3>
+                                <p class="text-gray-400">Handover of your beautifully designed space with warranty documentation and maintenance guidelines.</p>
+                            </div>
+                        </div>
+                        <div class="hidden md:block"></div>
+                    </div>
+                    <div class="absolute left-1/2 transform -translate-x-1/2 top-8 w-6 h-6 rounded-full bg-gold-500 border-4 border-charcoal-950 hidden md:block"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="relative py-24 lg:py-32">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 reveal">
+                <div class="inline-flex items-center space-x-2 px-4 py-2 rounded-full glass mb-6">
+                    <span class="text-sm text-gold-300 tracking-wider uppercase">Testimonials</span>
+                </div>
+                <h2 class="section-title font-display text-4xl lg:text-5xl font-bold text-white mb-4">
+                    What Our <span class="text-gold-gradient">Clients Say</span>
+                </h2>
+                <p class="text-gray-400 text-lg max-w-2xl mx-auto">
+                    Real reviews from real clients who trusted us with their spaces.
+                </p>
+            </div>
+
+            <!-- Testimonials Grid -->
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Testimonial 1 -->
+                <div class="glass rounded-2xl p-8 hover:border-gold-500/30 transition-all duration-300 reveal">
+                    <div class="flex items-center space-x-1 mb-4">
+                        <i data-lucide="star" class="w-5 h-5 text-gold-400 fill-gold-400"></i>
+                        <i data-lucide="star" class="w-5 h-5 text-gold-400 fill-gold-400"></i>
+                        <i data-lucide="star" class="w-5 h-5 text-gold-400 fill-gold-400"></i>
+                        <i data-lucide="star" class="w-5 h-5 text-gold-400 fill-gold-400"></i>
+                        <i data-lucide="star" class="w-5 h-5 text-gold-400 fill-gold-400"></i>
+                    </div>
+                    <p class="text-gray-300 mb-6 leading-relaxed">"HS Interiors transformed our 3BHK apartment completely. The attention to detail and quality of work exceeded our expectations. Highly recommended!"</p>
+                    <div class="flex items-center space-x-4">
+                        <div class="w-12 h-12 rounded-full bg-gradient-to-br from-gold-400 to-gold-600 flex items-center justify-center">
+                            <span class="font-bold text-charcoal-900">RK</span>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-white">Rajesh Kumar</h4>
+                            <p class="text-sm text-gray-400">3BHK Apartment, Kharadi</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 2 -->
+                <div class="glass rounded-2xl p-8 hover:border-gold-500/30 transition-all duration-300 reveal">
+                    <div class="flex items-center space-x-1 mb-4">
+                        <i data-lucide="star" class="w-5 h-5 text-gold-400 fill-gold-400"></i>
+                        <i data-lucide="star" class="w-5 h-5 text-gold-400 fill-gold-400"></i>
+                        <i data-lucide="star" class="w-5 h-5 text-gold-400 fill-gold-400"></i>
+                        <i data-lucide="star" class="w-5 h-5 text-gold-400 fill-gold-400"></i>
+                        <i data-lucide="star" class="w-5 h-5 text-gold-400 fill-gold-400"></i>
+                    </div>
+                    <p class="text-gray-300 mb-6 leading-relaxed">"The modular kitchen they designed is a dream come true. Smart storage, beautiful finishes, and perfect functionality. The team was professional throughout."</p>
+                    <div class="flex items-center space-x-4">
+                        <div class="w-12 h-12 rounded-full bg-gradient-to-br from-gold-400 to-gold-600 flex items-center justify-center">
+                            <span class="font-bold text-charcoal-900">SP</span>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-white">Sneha Patil</h4>
+                            <p class="text-sm text-gray-400">Modular Kitchen, Wakad</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 3 -->
+                <div class="glass rounded-2xl p-8 hover:border-gold-500/30 transition-all duration-300 reveal">
+                    <div class="flex items-center space-x-1 mb-4">
+                        <i data-lucide="star" class="w-5 h-5 text-gold-400 fill-gold-400"></i>
+                        <i data-lucide="star" class="w-5 h-5 text-gold-400 fill-gold-400"></i>
+                        <i data-lucide="star" class="w-5 h-5 text-gold-400 fill-gold-400"></i>
+                        <i data-lucide="star" class="w-5 h-5 text-gold-400 fill-gold-400"></i>
+                        <i data-lucide="star" class="w-5 h-5 text-gold-400 fill-gold-400"></i>
+                    </div>
+                    <p class="text-gray-300 mb-6 leading-relaxed">"We got our villa interiors done by HS Interiors. The luxury feel and attention to every corner is remarkable. Worth every penny invested."</p>
+                    <div class="flex items-center space-x-4">
+                        <div class="w-12 h-12 rounded-full bg-gradient-to-br from-gold-400 to-gold-600 flex items-center justify-center">
+                            <span class="font-bold text-charcoal-900">AM</span>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-white">Amit Mehta</h4>
+                            <p class="text-sm text-gray-400">Villa, Baner</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 4 -->
+                <div class="glass rounded-2xl p-8 hover:border-gold-500/30 transition-all duration-300 reveal">
+                    <div class="flex items-center space-x-1 mb-4">
+                        <i data-lucide="star" class="w-5 h-5 text-gold-400 fill-gold-400"></i>
+                        <i data-lucide="star" class="w-5 h-5 text-gold-400 fill-gold-400"></i>
+                        <i data-lucide="star" class="w-5 h-5 text-gold-400 fill-gold-400"></i>
+                        <i data-lucide="star" class="w-5 h-5 text-gold-400 fill-gold-400"></i>
+                        <i data-lucide="star" class="w-5 h-5 text-gold-400 fill-gold-400"></i>
+                    </div>
+                    <p class="text-gray-300 mb-6 leading-relaxed">"Our office renovation was handled seamlessly. The new design has boosted team productivity and client impressions. Thank you HS Interiors!"</p>
+                    <div class="flex items-center space-x-4">
+                        <div class="w-12 h-12 rounded-full bg-gradient-to-br from-gold-400 to-gold-600 flex items-center justify-center">
+                            <span class="font-bold text-charcoal-900">PS</span>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-white">Priya Sharma</h4>
+                            <p class="text-sm text-gray-400">Office, Magarpatta</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 5 -->
+                <div class="glass rounded-2xl p-8 hover:border-gold-500/30 transition-all duration-300 reveal">
+                    <div class="flex items-center space-x-1 mb-4">
+                        <i data-lucide="star" class="w-5 h-5 text-gold-400 fill-gold-400"></i>
+                        <i data-lucide="star" class="w-5 h-5 text-gold-400 fill-gold-400"></i>
+                        <i data-lucide="star" class="w-5 h-5 text-gold-400 fill-gold-400"></i>
+                        <i data-lucide="star" class="w-5 h-5 text-gold-400 fill-gold-400"></i>
+                        <i data-lucide="star" class="w-5 h-5 text-gold-400 fill-gold-400"></i>
+                    </div>
+                    <p class="text-gray-300 mb-6 leading-relaxed">"They designed our 2BHK with such creativity that it feels much more spacious. The false ceiling and lighting design is absolutely stunning."</p>
+                    <div class="flex items-center space-x-4">
+                        <div class="w-12 h-12 rounded-full bg-gradient-to-br from-gold-400 to-gold-600 flex items-center justify-center">
+                            <span class="font-bold text-charcoal-900">NG</span>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-white">Neha Gupta</h4>
+                            <p class="text-sm text-gray-400">2BHK, Hinjewadi</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 6 -->
+                <div class="glass rounded-2xl p-8 hover:border-gold-500/30 transition-all duration-300 reveal">
+                    <div class="flex items-center space-x-1 mb-4">
+                        <i data-lucide="star" class="w-5 h-5 text-gold-400 fill-gold-400"></i>
+                        <i data-lucide="star" class="w-5 h-5 text-gold-400 fill-gold-400"></i>
+                        <i data-lucide="star" class="w-5 h-5 text-gold-400 fill-gold-400"></i>
+                        <i data-lucide="star" class="w-5 h-5 text-gold-400 fill-gold-400"></i>
+                        <i data-lucide="star" class="w-5 h-5 text-gold-400 fill-gold-400"></i>
+                    </div>
+                    <p class="text-gray-300 mb-6 leading-relaxed">"Transparent pricing, on-time delivery, and exceptional quality. HS Interiors is now our go-to for any interior work. Truly professional team!"</p>
+                    <div class="flex items-center space-x-4">
+                        <div class="w-12 h-12 rounded-full bg-gradient-to-br from-gold-400 to-gold-600 flex items-center justify-center">
+                            <span class="font-bold text-charcoal-900">VD</span>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-white">Vikram Desai</h4>
+                            <p class="text-sm text-gray-400">3BHK, Aundh</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="relative py-24 lg:py-32 bg-charcoal-950">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 reveal">
+                <div class="inline-flex items-center space-x-2 px-4 py-2 rounded-full glass mb-6">
+                    <span class="text-sm text-gold-300 tracking-wider uppercase">Gallery</span>
+                </div>
+                <h2 class="section-title font-display text-4xl lg:text-5xl font-bold text-white mb-4">
+                    Design <span class="text-gold-gradient">Inspiration</span>
+                </h2>
+                <p class="text-gray-400 text-lg max-w-2xl mx-auto">
+                    Explore our design gallery for ideas and inspiration for your next project.
+                </p>
+            </div>
+
+            <!-- Gallery Grid -->
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                <div class="group relative overflow-hidden rounded-xl cursor-pointer reveal" onclick="openLightbox(this)">
+                    <img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=600&q=80" 
+                         alt="Living Room Design" 
+                         class="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-charcoal-900/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+                        <span class="text-white font-medium">Living Room</span>
+                    </div>
+                </div>
+                <div class="group relative overflow-hidden rounded-xl cursor-pointer reveal" onclick="openLightbox(this)">
+                    <img src="https://images.unsplash.com/photo-1616594039964-ae9021a400a0?w=600&q=80" 
+                         alt="Bedroom Design" 
+                         class="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-charcoal-900/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+                        <span class="text-white font-medium">Bedroom</span>
+                    </div>
+                </div>
+                <div class="group relative overflow-hidden rounded-xl cursor-pointer reveal" onclick="openLightbox(this)">
+                    <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=600&q=80" 
+                         alt="Kitchen Design" 
+                         class="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-charcoal-900/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+                        <span class="text-white font-medium">Kitchen</span>
+                    </div>
+                </div>
+                <div class="group relative overflow-hidden rounded-xl cursor-pointer reveal" onclick="openLightbox(this)">
+                    <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=600&q=80" 
+                         alt="Office Design" 
+                         class="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-charcoal-900/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+                        <span class="text-white font-medium">Office</span>
+                    </div>
+                </div>
+                <div class="group relative overflow-hidden rounded-xl cursor-pointer reveal" onclick="openLightbox(this)">
+                    <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=600&q=80" 
+                         alt="Dining Room Design" 
+                         class="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-charcoal-900/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+                        <span class="text-white font-medium">Dining Room</span>
+                    </div>
+                </div>
+                <div class="group relative overflow-hidden rounded-xl cursor-pointer reveal" onclick="openLightbox(this)">
+                    <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=600&q=80" 
+                         alt="False Ceiling Design" 
+                         class="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-charcoal-900/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+                        <span class="text-white font-medium">False Ceiling</span>
+                    </div>
+                </div>
+                <div class="group relative overflow-hidden rounded-xl cursor-pointer reveal" onclick="openLightbox(this)">
+                    <img src="https://images.unsplash.com/photo-1595526114035-0d45ed16cfbf?w=600&q=80" 
+                         alt="Wardrobe Design" 
+                         class="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-charcoal-900/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+                        <span class="text-white font-medium">Wardrobe</span>
+                    </div>
+                </div>
+                <div class="group relative overflow-hidden rounded-xl cursor-pointer reveal" onclick="openLightbox(this)">
+                    <img src="https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?w=600&q=80" 
+                         alt="Bathroom Design" 
+                         class="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-charcoal-900/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+                        <span class="text-white font-medium">Bathroom</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lightbox -->
+    <div id="lightbox" class="fixed inset-0 z-50 bg-charcoal-950/95 backdrop-blur-sm flex items-center justify-center opacity-0 invisible transition-all duration-300">
+        <button onclick="closeLightbox()" class="absolute top-6 right-6 p-2 text-white hover:text-gold-400 transition-colors">
+            <i data-lucide="x" class="w-8 h-8"></i>
+        </button>
+        <img id="lightboxImage" src="" alt="Gallery Image" class="max-w-[90vw] max-h-[90vh] object-contain rounded-lg">
+    </div>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="relative py-24 lg:py-32">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 reveal">
+                <div class="inline-flex items-center space-x-2 px-4 py-2 rounded-full glass mb-6">
+                    <span class="text-sm text-gold-300 tracking-wider uppercase">FAQ</span>
+                </div>
+                <h2 class="section-title font-display text-4xl lg:text-5xl font-bold text-white mb-4">
+                    Frequently Asked <span class="text-gold-gradient">Questions</span>
+                </h2>
+                <p class="text-gray-400 text-lg max-w-2xl mx-auto">
+                    Got questions? We have got answers. Here are some common queries from our clients.
+                </p>
+            </div>
+
+            <!-- FAQ Items -->
+            <div class="space-y-4">
+                <!-- FAQ 1 -->
+                <div class="faq-item glass rounded-2xl overflow-hidden reveal">
+                    <button class="faq-question w-full px-6 py-5 flex items-center justify-between text-left" onclick="toggleFaq(this)">
+                        <span class="font-semibold text-white pr-4">How much does interior design cost in Pune?</span>
+                        <i data-lucide="chevron-down" class="faq-icon w-5 h-5 text-gold-400 flex-shrink-0"></i>
+                    </button>
+                    <div class="faq-answer px-6 pb-5">
+                        <p class="text-gray-400">Interior design costs in Pune typically range from Rs. 800 to Rs. 2,500 per square foot depending on the scope, materials, and complexity. A basic 2BHK (800 sq ft) can start from Rs. 6-8 lakhs, while premium villas can go up to Rs. 50+ lakhs. We provide detailed quotations after understanding your requirements during the free consultation.</p>
+                    </div>
+                </div>
+
+                <!-- FAQ 2 -->
+                <div class="faq-item glass rounded-2xl overflow-hidden reveal">
+                    <button class="faq-question w-full px-6 py-5 flex items-center justify-between text-left" onclick="toggleFaq(this)">
+                        <span class="font-semibold text-white pr-4">How long does a project take?</span>
+                        <i data-lucide="chevron-down" class="faq-icon w-5 h-5 text-gold-400 flex-shrink-0"></i>
+                    </button>
+                    <div class="faq-answer px-6 pb-5">
+                        <p class="text-gray-400">Project timelines vary based on size and complexity. A typical 2BHK interior takes 45-60 days, a 3BHK takes 60-90 days, and villas or commercial spaces can take 3-6 months. We provide a detailed timeline during the planning phase and ensure strict adherence to deadlines.</p>
+                    </div>
+                </div>
+
+                <!-- FAQ 3 -->
+                <div class="faq-item glass rounded-2xl overflow-hidden reveal">
+                    <button class="faq-question w-full px-6 py-5 flex items-center justify-between text-left" onclick="toggleFaq(this)">
+                        <span class="font-semibold text-white pr-4">Do you provide 3D designs?</span>
+                        <i data-lucide="chevron-down" class="faq-icon w-5 h-5 text-gold-400 flex-shrink-0"></i>
+                    </button>
+                    <div class="faq-answer px-6 pb-5">
+                        <p class="text-gray-400">Yes! We provide photorealistic 3D renders for all our projects. You can visualize your space before any construction begins, make changes to colors, materials, and layouts, and approve every detail. This ensures there are no surprises and you get exactly what you envision.</p>
+                    </div>
+                </div>
+
+                <!-- FAQ 4 -->
+                <div class="faq-item glass rounded-2xl overflow-hidden reveal">
+                    <button class="faq-question w-full px-6 py-5 flex items-center justify-between text-left" onclick="toggleFaq(this)">
+                        <span class="font-semibold text-white pr-4">Do you handle turnkey projects?</span>
+                        <i data-lucide="chevron-down" class="faq-icon w-5 h-5 text-gold-400 flex-shrink-0"></i>
+                    </button>
+                    <div class="faq-answer px-6 pb-5">
+                        <p class="text-gray-400">Absolutely! We specialize in turnkey interior solutions where we handle everything from design to execution. This includes civil work, electrical, plumbing, carpentry, painting, and final furnishing. You just hand over the keys and we deliver a ready-to-move-in space.</p>
+                    </div>
+                </div>
+
+                <!-- FAQ 5 -->
+                <div class="faq-item glass rounded-2xl overflow-hidden reveal">
+                    <button class="faq-question w-full px-6 py-5 flex items-center justify-between text-left" onclick="toggleFaq(this)">
+                        <span class="font-semibold text-white pr-4">What areas do you serve?</span>
+                        <i data-lucide="chevron-down" class="faq-icon w-5 h-5 text-gold-400 flex-shrink-0"></i>
+                    </button>
+                    <div class="faq-answer px-6 pb-5">
+                        <p class="text-gray-400">We primarily serve Pune city and nearby areas including PCMC, Pimpri-Chinchwad, Hinjewadi, Kharadi, Baner, Aundh, Wakad, Magarpatta, Kalyani Nagar, Koregaon Park, Viman Nagar, Kothrud, and surrounding regions. We also take select projects in Mumbai and nearby cities.</p>
+                    </div>
+                </div>
+
+                <!-- FAQ 6 -->
+                <div class="faq-item glass rounded-2xl overflow-hidden reveal">
+                    <button class="faq-question w-full px-6 py-5 flex items-center justify-between text-left" onclick="toggleFaq(this)">
+                        <span class="font-semibold text-white pr-4">Do you offer warranty on your work?</span>
+                        <i data-lucide="chevron-down" class="faq-icon w-5 h-5 text-gold-400 flex-shrink-0"></i>
+                    </button>
+                    <div class="faq-answer px-6 pb-5">
+                        <p class="text-gray-400">Yes, we offer a comprehensive warranty on all our work. Carpentry and modular furniture comes with a 5-year warranty, electrical work with 2 years, and painting with 1 year. We also provide 6 months of free maintenance service after project handover.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact / Lead Generation Section -->
+    <section id="contact" class="relative py-24 lg:py-32 bg-charcoal-950">
+        <div class="absolute inset-0 opacity-20" style="background-image: radial-gradient(circle at 50% 50%, rgba(212, 175, 55, 0.15) 0%, transparent 70%);"></div>
+
+        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-12 lg:gap-20">
+                <!-- Left: Contact Info -->
+                <div class="reveal-left">
+                    <div class="inline-flex items-center space-x-2 px-4 py-2 rounded-full glass mb-6">
+                        <span class="text-sm text-gold-300 tracking-wider uppercase">Contact Us</span>
+                    </div>
+
+                    <h2 class="section-title font-display text-4xl lg:text-5xl font-bold text-white mb-6">
+                        Ready To Design<br>
+                        <span class="text-gold-gradient">Your Dream Space?</span>
+                    </h2>
+
+                    <p class="text-gray-400 text-lg mb-8">
+                        Get in touch with us for a free consultation. Our team will visit your space, understand your requirements, and provide a detailed quotation.
+                    </p>
+
+                    <!-- Contact Details -->
+                    <div class="space-y-6 mb-8">
+                        <div class="flex items-start space-x-4">
+                            <div class="w-12 h-12 rounded-xl bg-gold-500/10 flex items-center justify-center flex-shrink-0">
+                                <i data-lucide="map-pin" class="w-6 h-6 text-gold-400"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-white mb-1">Visit Us</h4>
+                                <p class="text-gray-400">Market Yard, Pune, Maharashtra 411037</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start space-x-4">
+                            <div class="w-12 h-12 rounded-xl bg-gold-500/10 flex items-center justify-center flex-shrink-0">
+                                <i data-lucide="phone" class="w-6 h-6 text-gold-400"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-white mb-1">Call Us</h4>
+                                <p class="text-gray-400">+91 98765 43210</p>
+                                <p class="text-gray-400">+91 98765 43211</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start space-x-4">
+                            <div class="w-12 h-12 rounded-xl bg-gold-500/10 flex items-center justify-center flex-shrink-0">
+                                <i data-lucide="mail" class="w-6 h-6 text-gold-400"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-white mb-1">Email Us</h4>
+                                <p class="text-gray-400">info@hsinteriorspune.com</p>
+                                <p class="text-gray-400">projects@hsinteriorspune.com</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start space-x-4">
+                            <div class="w-12 h-12 rounded-xl bg-gold-500/10 flex items-center justify-center flex-shrink-0">
+                                <i data-lucide="clock" class="w-6 h-6 text-gold-400"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-white mb-1">Working Hours</h4>
+                                <p class="text-gray-400">Mon - Sat: 10:00 AM - 7:00 PM</p>
+                                <p class="text-gray-400">Sunday: By Appointment</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Social Links -->
+                    <div class="flex items-center space-x-4">
+                        <a href="#" class="w-12 h-12 rounded-xl bg-gold-500/10 flex items-center justify-center hover:bg-gold-500/20 transition-colors">
+                            <i data-lucide="instagram" class="w-6 h-6 text-gold-400"></i>
+                        </a>
+                        <a href="#" class="w-12 h-12 rounded-xl bg-gold-500/10 flex items-center justify-center hover:bg-gold-500/20 transition-colors">
+                            <i data-lucide="facebook" class="w-6 h-6 text-gold-400"></i>
+                        </a>
+                        <a href="#" class="w-12 h-12 rounded-xl bg-gold-500/10 flex items-center justify-center hover:bg-gold-500/20 transition-colors">
+                            <i data-lucide="linkedin" class="w-6 h-6 text-gold-400"></i>
+                        </a>
+                        <a href="#" class="w-12 h-12 rounded-xl bg-gold-500/10 flex items-center justify-center hover:bg-gold-500/20 transition-colors">
+                            <i data-lucide="youtube" class="w-6 h-6 text-gold-400"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Right: Contact Form -->
+                <div class="reveal-right">
+                    <div class="glass rounded-2xl p-8">
+                        <h3 class="font-display text-2xl font-bold text-white mb-6">Book Free Consultation</h3>
+
+                        <form id="contactForm" class="space-y-5">
+                            <div class="grid md:grid-cols-2 gap-5">
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-400 mb-2">Full Name</label>
+                                    <input type="text" 
+                                           class="form-input w-full px-4 py-3 bg-charcoal-800 border border-charcoal-700 rounded-xl text-white placeholder-gray-500 focus:outline-none transition-all duration-300" 
+                                           placeholder="Your Name" required>
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-400 mb-2">Phone Number</label>
+                                    <input type="tel" 
+                                           class="form-input w-full px-4 py-3 bg-charcoal-800 border border-charcoal-700 rounded-xl text-white placeholder-gray-500 focus:outline-none transition-all duration-300" 
+                                           placeholder="+91 98765 43210" required>
+                                </div>
+                            </div>
+
+                            <div>
+                                <label class="block text-sm font-medium text-gray-400 mb-2">Email Address</label>
+                                <input type="email" 
+                                       class="form-input w-full px-4 py-3 bg-charcoal-800 border border-charcoal-700 rounded-xl text-white placeholder-gray-500 focus:outline-none transition-all duration-300" 
+                                       placeholder="your@email.com" required>
+                            </div>
+
+                            <div class="grid md:grid-cols-2 gap-5">
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-400 mb-2">Project Type</label>
+                                    <select class="form-input w-full px-4 py-3 bg-charcoal-800 border border-charcoal-700 rounded-xl text-white focus:outline-none transition-all duration-300" required>
+                                        <option value="">Select Type</option>
+                                        <option value="2bhk">2BHK Apartment</option>
+                                        <option value="3bhk">3BHK Apartment</option>
+                                        <option value="villa">Villa</option>
+                                        <option value="kitchen">Modular Kitchen</option>
+                                        <option value="office">Office/Commercial</option>
+                                        <option value="renovation">Renovation</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-400 mb-2">Budget Range</label>
+                                    <select class="form-input w-full px-4 py-3 bg-charcoal-800 border border-charcoal-700 rounded-xl text-white focus:outline-none transition-all duration-300" required>
+                                        <option value="">Select Budget</option>
+                                        <option value="5-10">Rs. 5 - 10 Lakhs</option>
+                                        <option value="10-20">Rs. 10 - 20 Lakhs</option>
+                                        <option value="20-30">Rs. 20 - 30 Lakhs</option>
+                                        <option value="30-50">Rs. 30 - 50 Lakhs</option>
+                                        <option value="50+">Rs. 50+ Lakhs</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div>
+                                <label class="block text-sm font-medium text-gray-400 mb-2">Message</label>
+                                <textarea class="form-input w-full px-4 py-3 bg-charcoal-800 border border-charcoal-700 rounded-xl text-white placeholder-gray-500 focus:outline-none transition-all duration-300 resize-none" 
+                                          rows="4" 
+                                          placeholder="Tell us about your project requirements..."></textarea>
+                            </div>
+
+                            <div class="flex flex-col sm:flex-row gap-4">
+                                <button type="submit" 
+                                        class="flex-1 px-8 py-4 bg-gradient-to-r from-gold-500 to-gold-600 text-charcoal-900 font-bold rounded-xl hover:from-gold-400 hover:to-gold-500 transition-all duration-300 hover:shadow-lg hover:shadow-gold-500/25 flex items-center justify-center space-x-2">
+                                    <span>Book Consultation</span>
+                                    <i data-lucide="send" class="w-5 h-5"></i>
+                                </button>
+                                <a href="https://wa.me/919876543210" 
+                                   target="_blank"
+                                   class="flex-1 px-8 py-4 border-2 border-green-500/50 text-green-400 font-semibold rounded-xl hover:bg-green-500/10 hover:border-green-400 transition-all duration-300 flex items-center justify-center space-x-2">
+                                    <i data-lucide="message-circle" class="w-5 h-5"></i>
+                                    <span>WhatsApp Now</span>
+                                </a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="relative py-16 bg-charcoal-950 border-t border-charcoal-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
+                <!-- Company Info -->
+                <div class="lg:col-span-1">
+                    <div class="flex items-center space-x-3 mb-6">
+                        <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-gold-400 to-gold-600 flex items-center justify-center">
+                            <span class="font-display font-bold text-charcoal-900 text-lg">HS</span>
+                        </div>
+                        <div>
+                            <span class="font-display font-bold text-xl text-white">HS Interiors</span>
+                            <span class="block text-xs text-gold-400 tracking-widest uppercase">Pune</span>
+                        </div>
+                    </div>
+                    <p class="text-gray-400 text-sm mb-6 leading-relaxed">
+                        Premium interior design services in Pune. Transforming spaces into extraordinary experiences since 2015.
+                    </p>
+                    <div class="flex items-center space-x-3">
+                        <a href="#" class="w-10 h-10 rounded-lg bg-gold-500/10 flex items-center justify-center hover:bg-gold-500/20 transition-colors">
+                            <i data-lucide="instagram" class="w-5 h-5 text-gold-400"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-lg bg-gold-500/10 flex items-center justify-center hover:bg-gold-500/20 transition-colors">
+                            <i data-lucide="facebook" class="w-5 h-5 text-gold-400"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-lg bg-gold-500/10 flex items-center justify-center hover:bg-gold-500/20 transition-colors">
+                            <i data-lucide="linkedin" class="w-5 h-5 text-gold-400"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-lg bg-gold-500/10 flex items-center justify-center hover:bg-gold-500/20 transition-colors">
+                            <i data-lucide="youtube" class="w-5 h-5 text-gold-400"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Quick Links -->
+                <div>
+                    <h4 class="font-display font-bold text-white mb-6">Quick Links</h4>
+                    <ul class="space-y-3">
+                        <li><a href="#about" class="text-gray-400 hover:text-gold-400 transition-colors text-sm">About Us</a></li>
+                        <li><a href="#services" class="text-gray-400 hover:text-gold-400 transition-colors text-sm">Our Services</a></li>
+                        <li><a href="#projects" class="text-gray-400 hover:text-gold-400 transition-colors text-sm">Portfolio</a></li>
+                        <li><a href="#process" class="text-gray-400 hover:text-gold-400 transition-colors text-sm">Our Process</a></li>
+                        <li><a href="#testimonials" class="text-gray-400 hover:text-gold-400 transition-colors text-sm">Testimonials</a></li>
+                        <li><a href="#contact" class="text-gray-400 hover:text-gold-400 transition-colors text-sm">Contact</a></li>
+                    </ul>
+                </div>
+
+                <!-- Services -->
+                <div>
+                    <h4 class="font-display font-bold text-white mb-6">Services</h4>
+                    <ul class="space-y-3">
+                        <li><a href="#services" class="text-gray-400 hover:text-gold-400 transition-colors text-sm">Home Interior Design</a></li>
+                        <li><a href="#services" class="text-gray-400 hover:text-gold-400 transition-colors text-sm">Modular Kitchen</a></li>
+                        <li><a href="#services" class="text-gray-400 hover:text-gold-400 transition-colors text-sm">Bedroom Design</a></li>
+                        <li><a href="#services" class="text-gray-400 hover:text-gold-400 transition-colors text-sm">Living Room Design</a></li>
+                        <li><a href="#services" class="text-gray-400 hover:text-gold-400 transition-colors text-sm">Commercial Interiors</a></li>
+                        <li><a href="#services" class="text-gray-400 hover:text-gold-400 transition-colors text-sm">Turnkey Projects</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact -->
+                <div>
+                    <h4 class="font-display font-bold text-white mb-6">Contact</h4>
+                    <ul class="space-y-3">
+                        <li class="flex items-start space-x-3">
+                            <i data-lucide="map-pin" class="w-5 h-5 text-gold-400 flex-shrink-0 mt-0.5"></i>
+                            <span class="text-gray-400 text-sm">Market Yard, Pune, Maharashtra 411037</span>
+                        </li>
+                        <li class="flex items-start space-x-3">
+                            <i data-lucide="phone" class="w-5 h-5 text-gold-400 flex-shrink-0 mt-0.5"></i>
+                            <span class="text-gray-400 text-sm">+91 98765 43210</span>
+                        </li>
+                        <li class="flex items-start space-x-3">
+                            <i data-lucide="mail" class="w-5 h-5 text-gold-400 flex-shrink-0 mt-0.5"></i>
+                            <span class="text-gray-400 text-sm">info@hsinteriorspune.com</span>
+                        </li>
+                        <li class="flex items-start space-x-3">
+                            <i data-lucide="clock" class="w-5 h-5 text-gold-400 flex-shrink-0 mt-0.5"></i>
+                            <span class="text-gray-400 text-sm">Mon - Sat: 10AM - 7PM</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Bottom Bar -->
+            <div class="pt-8 border-t border-charcoal-800 flex flex-col md:flex-row items-center justify-between gap-4">
+                <p class="text-gray-500 text-sm">
+                    &copy; 2025 HS Interiors Pune. All rights reserved.
+                </p>
+                <div class="flex items-center space-x-6">
+                    <a href="#" class="text-gray-500 hover:text-gold-400 transition-colors text-sm">Privacy Policy</a>
+                    <a href="#" class="text-gray-500 hover:text-gold-400 transition-colors text-sm">Terms of Service</a>
+                    <a href="#" class="text-gray-500 hover:text-gold-400 transition-colors text-sm">Sitemap</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Float Button -->
+    <a href="https://wa.me/919876543210" 
+       target="_blank"
+       class="whatsapp-float w-14 h-14 rounded-full bg-green-500 flex items-center justify-center shadow-lg hover:bg-green-600 transition-colors">
+        <i data-lucide="message-circle" class="w-7 h-7 text-white"></i>
+    </a>
+
+    <!-- JavaScript -->
+    <script>
+        // Initialize Lucide Icons
+        document.addEventListener('DOMContentLoaded', function() {
+            lucide.createIcons();
+
+            // Initialize all functionality
+            initNavbar();
+            initMobileMenu();
+            initScrollAnimations();
+            initCounters();
+            initPortfolioFilter();
+            initFaqAccordion();
+            initProgressBar();
+            initLightbox();
+            initFormValidation();
+            initSmoothScroll();
+        });
+
+        // Navbar Scroll Effect
+        function initNavbar() {
+            const navbar = document.getElementById('navbar');
+            let lastScroll = 0;
+
+            window.addEventListener('scroll', () => {
+                const currentScroll = window.pageYOffset;
+
+                if (currentScroll > 100) {
+                    navbar.classList.add('nav-sticky');
+                } else {
+                    navbar.classList.remove('nav-sticky');
+                }
+
+                lastScroll = currentScroll;
+            });
+        }
+
+        // Mobile Menu
+        function initMobileMenu() {
+            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+            const closeMobileMenu = document.getElementById('closeMobileMenu');
+            const mobileMenu = document.getElementById('mobileMenu');
+            const mobileLinks = document.querySelectorAll('.mobile-link');
+
+            mobileMenuBtn.addEventListener('click', () => {
+                mobileMenu.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            });
+
+            closeMobileMenu.addEventListener('click', () => {
+                mobileMenu.classList.remove('active');
+                document.body.style.overflow = '';
+            });
+
+            mobileLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.remove('active');
+                    document.body.style.overflow = '';
+                });
+            });
+        }
+
+        // Scroll Animations with GSAP
+        function initScrollAnimations() {
+            gsap.registerPlugin(ScrollTrigger);
+
+            // Reveal animations
+            gsap.utils.toArray('.reveal').forEach(element => {
+                gsap.fromTo(element, 
+                    { opacity: 0, y: 30 },
+                    {
+                        opacity: 1,
+                        y: 0,
+                        duration: 0.8,
+                        ease: 'power3.out',
+                        scrollTrigger: {
+                            trigger: element,
+                            start: 'top 85%',
+                            toggleActions: 'play none none none'
+                        }
+                    }
+                );
+            });
+
+            // Reveal left animations
+            gsap.utils.toArray('.reveal-left').forEach(element => {
+                gsap.fromTo(element,
+                    { opacity: 0, x: -50 },
+                    {
+                        opacity: 1,
+                        x: 0,
+                        duration: 1,
+                        ease: 'power3.out',
+                        scrollTrigger: {
+                            trigger: element,
+                            start: 'top 80%',
+                            toggleActions: 'play none none none'
+                        }
+                    }
+                );
+            });
+
+            // Reveal right animations
+            gsap.utils.toArray('.reveal-right').forEach(element => {
+                gsap.fromTo(element,
+                    { opacity: 0, x: 50 },
+                    {
+                        opacity: 1,
+                        x: 0,
+                        duration: 1,
+                        ease: 'power3.out',
+                        scrollTrigger: {
+                            trigger: element,
+                            start: 'top 80%',
+                            toggleActions: 'play none none none'
+                        }
+                    }
+                );
+            });
+
+            // Stagger animations for grids
+            gsap.utils.toArray('.service-card').forEach((card, i) => {
+                gsap.fromTo(card,
+                    { opacity: 0, y: 30 },
+                    {
+                        opacity: 1,
+                        y: 0,
+                        duration: 0.6,
+                        delay: i * 0.1,
+                        ease: 'power3.out',
+                        scrollTrigger: {
+                            trigger: card,
+                            start: 'top 85%',
+                            toggleActions: 'play none none none'
+                        }
+                    }
+                );
+            });
+
+            gsap.utils.toArray('.portfolio-item').forEach((item, i) => {
+                gsap.fromTo(item,
+                    { opacity: 0, y: 30 },
+                    {
+                        opacity: 1,
+                        y: 0,
+                        duration: 0.6,
+                        delay: i * 0.08,
+                        ease: 'power3.out',
+                        scrollTrigger: {
+                            trigger: item,
+                            start: 'top 85%',
+                            toggleActions: 'play none none none'
+                        }
+                    }
+                );
+            });
+        }
+
+        // Counter Animation
+        function initCounters() {
+            const counters = document.querySelectorAll('.counter-value');
+
+            counters.forEach(counter => {
+                const target = parseFloat(counter.dataset.target);
+                const decimal = parseInt(counter.dataset.decimal) || 0;
+
+                ScrollTrigger.create({
+                    trigger: counter,
+                    start: 'top 85%',
+                    onEnter: () => {
+                        gsap.to(counter, {
+                            innerHTML: target,
+                            duration: 2,
+                            ease: 'power2.out',
+                            snap: { innerHTML: decimal === 0 ? 1 : 0.1 },
+                            onUpdate: function() {
+                                counter.innerHTML = parseFloat(counter.innerHTML).toFixed(decimal);
+                            }
+                        });
+                    },
+                    once: true
+                });
+            });
+        }
+
+        // Portfolio Filter
+        function initPortfolioFilter() {
+            const filterBtns = document.querySelectorAll('.filter-btn');
+            const portfolioItems = document.querySelectorAll('.portfolio-item');
+
+            filterBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    // Update active button
+                    filterBtns.forEach(b => {
+                        b.classList.remove('active', 'bg-gold-500', 'text-charcoal-900');
+                        b.classList.add('border-gold-500/30', 'text-gold-400');
+                    });
+                    btn.classList.add('active', 'bg-gold-500', 'text-charcoal-900');
+                    btn.classList.remove('border-gold-500/30', 'text-gold-400');
+
+                    const filter = btn.dataset.filter;
+
+                    portfolioItems.forEach(item => {
+                        if (filter === 'all' || item.dataset.category === filter) {
+                            gsap.to(item, {
+                                opacity: 1,
+                                scale: 1,
+                                duration: 0.4,
+                                display: 'block'
+                            });
+                        } else {
+                            gsap.to(item, {
+                                opacity: 0,
+                                scale: 0.8,
+                                duration: 0.4,
+                                display: 'none'
+                            });
+                        }
+                    });
+                });
+            });
+        }
+
+        // FAQ Accordion
+        function initFaqAccordion() {
+            const faqItems = document.querySelectorAll('.faq-item');
+
+            faqItems.forEach(item => {
+                const question = item.querySelector('.faq-question');
+                question.addEventListener('click', () => {
+                    const isActive = item.classList.contains('active');
+
+                    // Close all items
+                    faqItems.forEach(i => i.classList.remove('active'));
+
+                    // Open clicked item if it was not active
+                    if (!isActive) {
+                        item.classList.add('active');
+                    }
+                });
+            });
+        }
+
+        // Progress Bar
+        function initProgressBar() {
+            const progressBar = document.getElementById('progressBar');
+
+            window.addEventListener('scroll', () => {
+                const scrollTop = window.pageYOffset;
+                const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+                const scrollPercent = scrollTop / docHeight;
+
+                progressBar.style.transform = `scaleX(${scrollPercent})`;
+            });
+        }
+
+        // Lightbox
+        function initLightbox() {
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImage = document.getElementById('lightboxImage');
+
+            window.openLightbox = function(element) {
+                const img = element.querySelector('img');
+                lightboxImage.src = img.src;
+                lightboxImage.alt = img.alt;
+                lightbox.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            };
+
+            window.closeLightbox = function() {
+                lightbox.classList.remove('active');
+                document.body.style.overflow = '';
+            };
+
+            lightbox.addEventListener('click', (e) => {
+                if (e.target === lightbox) {
+                    closeLightbox();
+                }
+            });
+
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') {
+                    closeLightbox();
+                }
+            });
+        }
+
+        // Form Validation
+        function initFormValidation() {
+            const form = document.getElementById('contactForm');
+
+            form.addEventListener('submit', (e) => {
+                e.preventDefault();
+
+                // Simple validation
+                const inputs = form.querySelectorAll('input[required], select[required]');
+                let isValid = true;
+
+                inputs.forEach(input => {
+                    if (!input.value.trim()) {
+                        isValid = false;
+                        input.style.borderColor = '#ef4444';
+                    } else {
+                        input.style.borderColor = '';
+                    }
+                });
+
+                if (isValid) {
+                    // Show success message
+                    alert('Thank you for your inquiry! Our team will contact you within 24 hours.');
+                    form.reset();
+                }
+            });
+
+            // Reset border color on input
+            form.querySelectorAll('input, select, textarea').forEach(input => {
+                input.addEventListener('input', () => {
+                    input.style.borderColor = '';
+                });
+            });
+        }
+
+        // Smooth Scroll
+        function initSmoothScroll() {
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        const offsetTop = target.offsetTop - 80;
+                        window.scrollTo({
+                            top: offsetTop,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        }
+
+        // FAQ Toggle Function (for inline onclick)
+        window.toggleFaq = function(button) {
+            const item = button.closest('.faq-item');
+            const isActive = item.classList.contains('active');
+
+            document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('active'));
+
+            if (!isActive) {
+                item.classList.add('active');
+            }
+        };
+
+        // Parallax Effect for Hero
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const hero = document.getElementById('hero');
+            if (hero) {
+                hero.style.backgroundPositionY = `${scrolled * 0.5}px`;
+            }
+        });
+
+        // Custom Cursor (Desktop Only)
+        if (window.matchMedia('(min-width: 1024px)').matches) {
+            const cursor = document.getElementById('cursorFollower');
+
+            document.addEventListener('mousemove', (e) => {
+                cursor.style.left = e.clientX + 'px';
+                cursor.style.top = e.clientY + 'px';
+            });
+
+            document.querySelectorAll('a, button, .cursor-pointer').forEach(el => {
+                el.addEventListener('mouseenter', () => cursor.classList.add('hover'));
+                el.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
+            });
+        }
+
+        // 3D Tilt Effect for Cards
+        document.querySelectorAll('.tilt-card').forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+
+                const rotateX = (y - centerY) / 20;
+                const rotateY = (centerX - x) / 20;
+
+                card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+            });
+
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0)';
+            });
+        });
+    </script>
+</body>
+</html>
